@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import {
   Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
@@ -94,54 +93,6 @@ export function UsageAnalytics() {
         </div>
       </div>
 
-      <div className="lg:col-span-3 rounded-xl bg-card border border-border p-5">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="text-sm font-semibold">Peak usage times</h3>
-            <p className="text-xs text-muted-foreground mt-0.5">Inference call density · UTC</p>
-          </div>
-          <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
-            Low
-            <div className="flex gap-0.5">
-              {[0.1, 0.25, 0.45, 0.7, 1].map((o) => (
-                <div key={o} className="h-3 w-3 rounded-sm" style={{ background: `hsl(var(--primary) / ${o})` }} />
-              ))}
-            </div>
-            High
-          </div>
-        </div>
-        <div className="overflow-x-auto">
-          <div className="min-w-[720px]">
-            <div className="grid gap-1" style={{ gridTemplateColumns: "40px repeat(24, 1fr)" }}>
-              <div />
-              {heatmapHours.map((h) => (
-                <div key={h} className="text-[9px] text-muted-foreground text-center">
-                  {h % 3 === 0 ? `${h}h` : ""}
-                </div>
-              ))}
-              {heatmapDays.map((d, di) => (
-                <Fragment key={d}>
-                  <div className="text-[10px] text-muted-foreground flex items-center">{d}</div>
-                  {heatmapHours.map((h) => {
-                    const intensity = Math.max(
-                      0.05,
-                      Math.min(1, 0.2 + Math.sin((h - 9) / 4) * 0.45 + (di < 5 ? 0.25 : -0.1) + Math.random() * 0.2)
-                    );
-                    return (
-                      <div
-                        key={`${d}-${h}`}
-                        title={`${d} ${h}:00 — ${(intensity * 1000).toFixed(0)} calls`}
-                        className="h-6 rounded-sm hover:ring-2 hover:ring-primary/60 transition-all cursor-pointer"
-                        style={{ background: `hsl(var(--primary) / ${intensity})` }}
-                      />
-                    );
-                  })}
-                </Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

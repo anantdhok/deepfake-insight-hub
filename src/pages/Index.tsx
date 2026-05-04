@@ -5,6 +5,7 @@ import { UsageAnalytics } from "@/components/dashboard/UsageAnalytics";
 import { DetectionInsights } from "@/components/dashboard/DetectionInsights";
 import { CostSubscription } from "@/components/dashboard/CostSubscription";
 import { CasesTable } from "@/components/dashboard/CasesTable";
+import { FilesTable } from "@/components/dashboard/FilesTable";
 import { SidePanels } from "@/components/dashboard/SidePanels";
 import { Calendar, Download, Sparkles } from "lucide-react";
 
@@ -43,6 +44,7 @@ const Index = () => {
           <DetectionInsights />
           <CostSubscription />
           <CasesTable />
+          <FilesTable />
           <SidePanels />
 
           <footer className="pt-6 pb-4 text-center text-[11px] text-muted-foreground">
