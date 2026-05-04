@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import {
   Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
@@ -119,8 +120,8 @@ export function UsageAnalytics() {
                 </div>
               ))}
               {heatmapDays.map((d, di) => (
-                <>
-                  <div key={d} className="text-[10px] text-muted-foreground flex items-center">{d}</div>
+                <Fragment key={d}>
+                  <div className="text-[10px] text-muted-foreground flex items-center">{d}</div>
                   {heatmapHours.map((h) => {
                     const intensity = Math.max(
                       0.05,
@@ -135,7 +136,7 @@ export function UsageAnalytics() {
                       />
                     );
                   })}
-                </>
+                </Fragment>
               ))}
             </div>
           </div>
